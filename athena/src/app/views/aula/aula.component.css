@@ -1,0 +1,15 @@
+.max-height{
+  z-index: 0;
+  height: 100%;
+}
+
+.dimensao-card{
+  height: 40vw;
+  width: 70vw;
+}
+
+.dimensao-div{
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+}

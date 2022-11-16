@@ -1,0 +1,15 @@
+.borda-lista-aulas{
+  border: 1px solid #d4d4d4;
+}
+
+a:hover{
+  color: #dc8602;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}

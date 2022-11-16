@@ -1,0 +1,15 @@
+<div class="d-flex dimensao-div">
+  <app-sidebar></app-sidebar>
+  <div>
+    <div class="card mt-4 ms-4 dimensao-card">
+      <iframe class="dimensao-card" [src]="getEmbedUrlYoutubeVideo(aula.link_video) | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="card-body">
+        <h5 class="card-title">{{ aula.titulo }}</h5>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+

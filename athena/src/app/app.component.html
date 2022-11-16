@@ -1,0 +1,5 @@
+<div class="vh-100" style="background-color: #eee;">
+  <app-navbar *ngIf="router.url !== '/login' && router.url !== '/cadastro'"></app-navbar>
+  <router-outlet></router-outlet>
+</div>
+
