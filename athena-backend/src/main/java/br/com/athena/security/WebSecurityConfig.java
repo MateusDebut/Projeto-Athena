@@ -1,5 +1,6 @@
 package br.com.athena.security;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Ignore
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -40,10 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/alunos/cadastrar").permitAll()
                 .antMatchers("/alunos/logar").permitAll()
-                .antMatchers("/turmas").permitAll()
+                /*.antMatchers("/turmas").permitAll()*/
                 .antMatchers("/admin/roles").permitAll()
-                .antMatchers(HttpMethod.GET ,"/alunos").hasRole("ALUNO")
-                .antMatchers(HttpMethod.GET ,"/disciplinas").hasRole("ADMIN")
+/*                .antMatchers(HttpMethod.GET ,"/alunos").hasRole("ALUNO")
+                .antMatchers(HttpMethod.GET ,"/disciplinas").hasRole("ADMIN")*/
                 .anyRequest().permitAll()
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
