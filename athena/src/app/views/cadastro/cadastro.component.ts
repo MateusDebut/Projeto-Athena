@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Professor} from "../../model/Professor";
-import {Aluno} from "../../model/Aluno";
-import {AlunoService} from "../../services/aluno.service";
-import {ProfessorService} from "../../services/professor.service";
 import {Turma} from "../../model/Turma";
 import {TurmaService} from "../../services/turma.service";
+import {AlunoService} from "../../services/aluno.service";
+import {Aluno} from "../../model/Aluno";
+import {ProfessorService} from "../../services/professor.service";
+
 
 @Component({
   selector: 'app-cadastro',
@@ -18,9 +19,12 @@ export class CadastroComponent implements OnInit {
   turmas: Turma[] = [];
 
   constructor(private alunoService: AlunoService, private professorService: ProfessorService,
-              private turmaService: TurmaService) { }
+              private turmaService: TurmaService) {
+    this.aluno.roles = [];
+  }
 
   ngOnInit(): void {
+    this.getTurmas();
   }
 
   postProfessor(){
@@ -29,11 +33,13 @@ export class CadastroComponent implements OnInit {
   }
 
   postAluno(){
+    console.log(this.aluno)
     this.alunoService.saveAluno(this.aluno).subscribe(() =>{
     })
   }
 
   getTurmas(){
+    console.log("Xablau")
     this.turmaService.getTurmas().subscribe((resp: Turma[]) => {
       this.turmas = resp;
     })

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AulaComponent} from "./views/aula/aula.component";
 
 @Component({
   selector: 'app-root',

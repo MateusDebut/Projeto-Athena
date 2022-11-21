@@ -29,7 +29,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" class="form-control" id="email" placeholder="Digite a turma"
+                      <input type="text" class="form-control" id="turma" placeholder="Digite a turma"
                              [(ngModel)]='aluno.turma' name="first">
                     </div>
                   </div>
@@ -47,6 +47,12 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="password" class="form-control" id="roles" placeholder="Digite uma role"
                              [(ngModel)]='aluno.roles[0].id' name="first">
+                      <!--<select name="categoria" id='categoria' class="form-control"
+                              (change)='getTurmas()'>
+                        <option *ngFor='let item of turmas' value={{item.id}}>
+                          {{item.ano}}
+                        </option>
+                      </select>-->
                     </div>
                   </div>
 

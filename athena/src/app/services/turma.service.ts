@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Turma} from "../model/Turma";
 import {catchError, retry} from "rxjs/operators";
+import {Turma} from "../model/Turma";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import {catchError, retry} from "rxjs/operators";
 
 export class TurmaService{
 
-  url = "http://localhost:3000/turmas";
+  url = "http://localhost:8080/turmas";
 
 
   constructor(private httpClient: HttpClient) {

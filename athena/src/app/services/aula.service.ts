@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Aula} from "../model/Aula";
 import {catchError, retry} from "rxjs/operators";
+import {Aula} from "../model/Aula";
 
 @Injectable({
   providedIn: 'root'

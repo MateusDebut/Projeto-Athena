@@ -27,7 +27,6 @@ public class ProfessorAuthenticationService implements UserDetailsService {
 
         ProfessorLoginDTO professorLoginDTO = new ProfessorLoginDTO(user.get());
 
-        return new User(professorLoginDTO.getUsername(), professorLoginDTO.getPassword(), true, true, true, true, professorLoginDTO.getAuthorities());
-        //return user.map(ProfessorLoginDTO::new).get();
+        return new User(professorLoginDTO.getUsername(), null, true, true, true, true, professorLoginDTO.getAuthorities());
     }
 }

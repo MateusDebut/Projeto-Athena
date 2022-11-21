@@ -8,12 +8,12 @@
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
-                <form class="mx-1 mx-md-4">
+                <form class="mx-1 mx-md-4" (ngSubmit)="loginAluno()">
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" class="form-control" id="email" placeholder="Digite o seu email"
-                             name="first">
+                             [(ngModel)]='aluno.email' name="first">
                     </div>
                   </div>
 
@@ -21,12 +21,12 @@
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input type="password" class="form-control" id="senha" placeholder="Digite sua senha"
-                             name="first">
+                             [(ngModel)]='aluno.senha' name="first">
                     </div>
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg" (click)="loginProfessor()">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
                   </div>
 
                 </form>

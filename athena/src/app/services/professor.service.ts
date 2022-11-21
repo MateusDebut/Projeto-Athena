@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, throwError} from "rxjs";
-import {Professor} from "../model/Professor";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, retry} from "rxjs/operators";
+import { Professor } from '../model/Professor';
 import {LoginResponse} from "../model/LoginResponse";
 
 @Injectable({

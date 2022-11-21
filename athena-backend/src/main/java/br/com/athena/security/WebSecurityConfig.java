@@ -37,16 +37,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
-                .antMatchers("/alunos/cadastrar").permitAll()
+        /*http.authorizeRequests()
                 .antMatchers("/alunos/logar").permitAll()
                 .antMatchers("/turmas").permitAll()
                 .antMatchers("/admin/roles").permitAll()
                 .antMatchers(HttpMethod.GET ,"/alunos").hasRole("ALUNO")
                 .antMatchers(HttpMethod.GET ,"/disciplinas").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().cors()
+                .and().csrf().disable();*/
+        http.httpBasic()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/alunos/logar").permitAll()
+                .antMatchers(HttpMethod.GET ,"/alunos").hasRole("ALUNO")
+                .antMatchers(HttpMethod.GET ,"/disciplinas").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and().cors()
                 .and().csrf().disable();
     }

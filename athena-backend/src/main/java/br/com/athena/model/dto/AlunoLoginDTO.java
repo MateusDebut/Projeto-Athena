@@ -2,7 +2,6 @@ package br.com.athena.model.dto;
 
 import br.com.athena.model.Aluno;
 import br.com.athena.model.RoleModel;
-import br.com.athena.model.Turma;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

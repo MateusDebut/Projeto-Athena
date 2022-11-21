@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Disciplina} from "../../model/Disciplina";
 import {DisciplinaService} from "../../services/disciplina.service";
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

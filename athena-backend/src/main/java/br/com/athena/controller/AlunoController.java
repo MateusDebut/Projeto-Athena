@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/alunos")
+@CrossOrigin
 public class AlunoController {
 
     @Autowired
@@ -26,6 +27,7 @@ public class AlunoController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Aluno> save(@RequestBody Aluno aluno) {
+        System.out.println("Chegou aqui");
         return ResponseEntity.ok(alunoService.salvarAluno(aluno));
     }
 

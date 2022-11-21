@@ -3,6 +3,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Aluno } from "../model/Aluno";
+import {AlunoDTO} from "../model/DTOs/AlunoDTO";
+import {environment} from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,22 @@ export class AlunoService {
   constructor(private httpClient: HttpClient) { }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Authorization', environment.token)
   }
 
   getAlunos(): Observable<Aluno[]>{
-    return this.httpClient.get<Aluno[]>(this.url)
+    return this.httpClient.get<Aluno[]>(this.url, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  loginAluno(aluno: Aluno): Observable<AlunoDTO>{
+    return this.httpClient.post<AlunoDTO>(this.url + "/logar", JSON.stringify(aluno), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -26,8 +39,7 @@ export class AlunoService {
   }
 
   saveAluno(aluno: Aluno): Observable<Aluno>{
-    // @ts-ignore
-    return this.httpClient.post<Aluno>(this.url + "/logar", JSON.stringify(aluno), this.httpOptions)
+    return this.httpClient.post<Aluno>(this.url + "/cadastrar", JSON.stringify(aluno), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -47,7 +59,4 @@ export class AlunoService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
-
-
-
 }
