@@ -44,6 +44,7 @@ export class AulaComponent implements OnInit {
   }
 
   getEmbedUrlYoutubeVideo(urlYoutubeVideo: string) : string{
+    console.log(urlYoutubeVideo)
     if(urlYoutubeVideo.includes("embed")){
       return urlYoutubeVideo;
     }

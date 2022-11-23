@@ -5,6 +5,7 @@ import {TurmaService} from "../../services/turma.service";
 import {AlunoService} from "../../services/aluno.service";
 import {Aluno} from "../../model/Aluno";
 import {ProfessorService} from "../../services/professor.service";
+import {Role} from "../../model/Role";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class CadastroComponent implements OnInit {
   constructor(private alunoService: AlunoService, private professorService: ProfessorService,
               private turmaService: TurmaService) {
     this.aluno.roles = [];
+    this.aluno.roles[0] = new Role();
   }
 
   ngOnInit(): void {

@@ -22,7 +22,7 @@ public class Aluno implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Turma turma;
 
@@ -31,6 +31,18 @@ public class Aluno implements Serializable {
                 joinColumns = @JoinColumn(name = "aluno_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<RoleModel> roles;
+
+    public Aluno() {
+    }
+
+    public Aluno(long id, String nome, String email, String senha, Turma turma, List<RoleModel> roles) {
+        this.id = id;
+        Nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.turma = turma;
+        this.roles = roles;
+    }
 
     public long getId() {
         return id;

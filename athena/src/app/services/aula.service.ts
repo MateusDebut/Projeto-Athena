@@ -10,7 +10,7 @@ import {Aula} from "../model/Aula";
 
 export class AulaService{
 
-  url = "http://localhost:3000/aulas";
+  url = "http://localhost:8080/aulas";
 
 
   constructor(private httpClient: HttpClient) {

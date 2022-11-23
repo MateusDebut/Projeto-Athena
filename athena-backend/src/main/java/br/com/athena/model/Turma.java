@@ -1,10 +1,11 @@
 package br.com.athena.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Turma {
+public class Turma implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +13,21 @@ public class Turma {
 
     private int ano;
 
-    @ManyToMany
-    private List<Professor> professores;
+/*    @ManyToMany
+    private List<Professor> professores;*/
 
     @OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
     private List<Aluno> alunos;
+
+    public Turma() {
+    }
+
+    public Turma(long id, int ano, List<Professor> professores, List<Aluno> alunos) {
+        this.id = id;
+        this.ano = ano;
+        //this.professores = professores;
+        this.alunos = alunos;
+    }
 
     public long getId() {
         return id;
@@ -34,13 +45,13 @@ public class Turma {
         this.ano = ano;
     }
 
-    public List<Professor> getProfessores() {
+   /* public List<Professor> getProfessores() {
         return professores;
     }
 
     public void setProfessores(List<Professor> professores) {
         this.professores = professores;
-    }
+    }*/
 
     public List<Aluno> getAlunos() {
         return alunos;

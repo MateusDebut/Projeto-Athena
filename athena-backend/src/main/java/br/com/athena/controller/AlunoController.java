@@ -15,8 +15,12 @@ import java.util.List;
 @CrossOrigin
 public class AlunoController {
 
-    @Autowired
     private AlunoService alunoService;
+
+    @Autowired
+    public AlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Aluno>> getAll(){

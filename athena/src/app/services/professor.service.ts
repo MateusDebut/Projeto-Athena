@@ -10,8 +10,8 @@ import {LoginResponse} from "../model/LoginResponse";
 })
 export class ProfessorService {
 
-  url = "http://localhost:3000/professores";
-  urlLogin = "http://localhost:3000/login";
+  url = "http://localhost:8080/professores";
+  urlLogin = "http://localhost:8080/login";
 
   constructor(private httpClient: HttpClient) { }
 
