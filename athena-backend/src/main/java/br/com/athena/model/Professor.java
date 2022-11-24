@@ -28,8 +28,8 @@ public class Professor {
     @JsonIgnoreProperties("professor")
     private List<Disciplina> disciplinas;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToMany
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("professor")
     private List<Turma> turmas;
 
     @ManyToMany

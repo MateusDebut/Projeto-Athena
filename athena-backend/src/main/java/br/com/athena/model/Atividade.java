@@ -1,5 +1,7 @@
 package br.com.athena.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Atividade {
     private String descricao;
 
     @ManyToOne
+    @JsonIgnoreProperties("atividade")
     private Aula aula;
 
     public long getId() {

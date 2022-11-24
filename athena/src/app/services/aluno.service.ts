@@ -19,7 +19,6 @@ export class AlunoService {
     headers: new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*')
-      .set('Authorization', environment.token)
   }
 
   getAlunos(): Observable<Aluno[]>{

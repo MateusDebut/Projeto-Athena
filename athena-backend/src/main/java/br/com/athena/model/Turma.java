@@ -1,5 +1,7 @@
 package br.com.athena.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -13,10 +15,12 @@ public class Turma implements Serializable {
 
     private int ano;
 
-/*    @ManyToMany
-    private List<Professor> professores;*/
+    @ManyToOne
+    @JsonIgnoreProperties("turma")
+    private Professor professor;
 
     @OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("turma")
     private List<Aluno> alunos;
 
     public Turma() {

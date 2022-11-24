@@ -21,6 +21,7 @@ public class Aula {
     private String linkVideo;
 
     @ManyToOne
+    @JsonIgnoreProperties("aula")
     private Disciplina disciplina;
 
     @OneToMany(mappedBy = "aula", cascade = CascadeType.ALL)

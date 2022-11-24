@@ -19,6 +19,7 @@ public class Disciplina {
     private String linkImagem;
 
     @ManyToOne
+    @JsonIgnoreProperties("disciplina")
     private Professor professor;
 
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)

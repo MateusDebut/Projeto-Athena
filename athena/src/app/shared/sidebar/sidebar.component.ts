@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Aula} from "../../model/Aula";
-import {AulaComponent} from "../aula/aula.component";
+import {AulaComponent} from "../../views/aula/aula.component";
 import {AulaService} from "../../services/aula.service";
 import {CommonService} from "../../services/CommonService";
 

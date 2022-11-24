@@ -22,8 +22,8 @@ public class Aluno implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
+    @JsonIgnoreProperties("aluno")
     private Turma turma;
 
     @ManyToMany

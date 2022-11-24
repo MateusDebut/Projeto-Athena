@@ -21,7 +21,7 @@
     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
     <div class="form-outline flex-fill mb-0">
       <input type="number" class="form-control" id="turma" placeholder="Digite a turma"
-             [(ngModel)]='aluno.turma' name="first">
+             [(ngModel)]='aluno.turma.id' name="first">
     </div>
   </div>
 
@@ -38,12 +38,6 @@
     <div class="form-outline flex-fill mb-0">
       <input type="number" class="form-control" id="roles" placeholder="Digite uma role"
              [(ngModel)]='aluno.roles[0].id' name="first">
-      <!--<select name="categoria" id='categoria' class="form-control"
-              (change)='getTurmas()'>
-        <option *ngFor='let item of turmas' value={{item.id}}>
-          {{item.ano}}
-        </option>
-      </select>-->
     </div>
   </div>
 

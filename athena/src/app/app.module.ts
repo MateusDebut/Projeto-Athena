@@ -8,9 +8,10 @@ import {AulaComponent} from "./views/aula/aula.component";
 import {DisciplinaComponent} from "./views/disciplina/disciplina.component";
 import {SafePipe} from "./safe.pipe";
 import {FormsModule} from "@angular/forms";
-import {SidebarComponent} from "./views/sidebar/sidebar.component";
+import {SidebarComponent} from "./shared/sidebar/sidebar.component";
 import {NavbarComponent} from "./shared/navbar/navbar.component";
 import { HomeComponent } from './views/home/home.component';
+import { MensagensComponent } from './shared/mensagens/mensagens.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './views/home/home.component';
     SafePipe,
     SidebarComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    MensagensComponent
   ],
   imports: [
     BrowserModule,

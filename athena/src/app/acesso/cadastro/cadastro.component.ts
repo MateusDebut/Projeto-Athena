@@ -21,8 +21,9 @@ export class CadastroComponent implements OnInit {
 
   constructor(private alunoService: AlunoService, private professorService: ProfessorService,
               private turmaService: TurmaService) {
-    this.aluno.roles = [];
-    this.aluno.roles[0] = new Role();
+    this.aluno.roles = new Array();
+    this.aluno.roles.push(new Role());
+    this.aluno.turma = new Turma();
   }
 
   ngOnInit(): void {
@@ -35,13 +36,11 @@ export class CadastroComponent implements OnInit {
   }
 
   postAluno(){
-    console.log(this.aluno)
     this.alunoService.saveAluno(this.aluno).subscribe(() =>{
     })
   }
 
   getTurmas(){
-    console.log("Xablau")
     this.turmaService.getTurmas().subscribe((resp: Turma[]) => {
       this.turmas = resp;
     })
