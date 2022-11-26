@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="card col-4 mt-3" *ngFor="let disciplina of disciplinas">
+    <img src="{{ disciplina.imagem }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ disciplina.nome }}</h5>
+      <p class="card-text">Professor: {{ disciplina.professor.nome }}</p>
+      <a [routerLink]='["/disciplina", disciplina.id]' class="btn btn-outline-primary">Acessar</a>
+    </div>
+  </div>
+</div>
