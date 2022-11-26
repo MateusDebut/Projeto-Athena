@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import { environment } from 'src/environments/environment.prod';
-import {AlunoDTO} from "../../model/DTOs/AlunoDTO";
 import {Professor} from "../../model/Professor";
-import {LoginResponse} from "../../model/LoginResponse";
 import {AlunoService} from "../../services/aluno.service";
 import {Aluno} from "../../model/Aluno";
 import {ProfessorService} from "../../services/professor.service";
+import {Usuario} from "../../model/Usuario";
+import {UsuarioService} from "../../services/usuario.service";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +17,7 @@ export class LoginComponent implements OnInit {
   professor: Professor = new Professor();
   aluno: Aluno = new Aluno();
 
-  constructor(private alunoService: AlunoService, private professorService: ProfessorService,
+  constructor(private usuarioService: UsuarioService, private professorService: ProfessorService,
               private router: Router) {
   }
 
@@ -26,22 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginAluno(){
-    this.alunoService.loginAluno(this.aluno).subscribe((resp: AlunoDTO) => {
+    this.usuarioService.login(this.aluno).subscribe((resp: Usuario) => {
       if(resp.token != null){
-        environment.token = resp.token;
         localStorage.setItem("token", resp.token);
-        console.log(resp.token)
-        this.router.navigate(['/home']);
-      }else{
-        alert("Tell me who you are")
-      }
-    });
-  }
-
-  loginProfessor(){
-    this.professorService.loginFakeProfessor(this.professor).subscribe((resp: LoginResponse) => {
-      if(resp.response){
-
+        this.usuarioService.estaLogado = true;
         this.router.navigate(['/home']);
       }else{
         alert("Tell me who you are")

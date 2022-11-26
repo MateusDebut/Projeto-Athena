@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {Aula} from "../model/Aula";
+import {environment} from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,10 @@ import {Aula} from "../model/Aula";
 
 export class AulaService{
 
-  url = "http://localhost:8080/aulas";
+  url = `${environment.apiUrl}/aulas`;
 
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
   getAulas(): Observable<Aula[]>{

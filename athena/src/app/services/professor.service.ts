@@ -1,23 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, throwError} from "rxjs";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, retry} from "rxjs/operators";
-import { Professor } from '../model/Professor';
-import {LoginResponse} from "../model/LoginResponse";
+import {Professor} from '../model/Professor';
+import {environment} from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfessorService {
 
-  url = "http://localhost:8080/professores";
-  urlLogin = "http://localhost:8080/login";
+  url = `${environment.apiUrl}/professores`;
 
   constructor(private httpClient: HttpClient) { }
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
 
   getProfessores(): Observable<Professor[]>{
     return this.httpClient.get<Professor[]>(this.url)
@@ -44,25 +39,6 @@ export class ProfessorService {
       )
   }
 
-  loginProfessor(professor: Professor): Observable<LoginResponse>{
-    // @ts-ignore
-    return this.httpClient.post<LoginResponse>(this.urlLogin, JSON.stringify(professor), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  loginFakeProfessor(professor: Professor): Observable<LoginResponse>{
-    alert("esse login é fake")
-    // @ts-ignore
-    return this.httpClient.get<LoginResponse>(this.urlLogin)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
   updateProfessor(professor: Professor): Observable<Professor> {
     // @ts-ignore
     return this.httpClient.put<Professor>(this.url + '/' + professor.id, JSON.stringify(professor), this.httpOptions)
@@ -73,7 +49,7 @@ export class ProfessorService {
   }
 
   deleteProfessor(professor: Professor) {
-    return this.httpClient.delete<Professor>(this.url + '/' + professor.id, this.httpOptions)
+    return this.httpClient.delete<Professor>(this.url + '/' + professor.id)
       .pipe(
         retry(1),
         catchError(this.handleError)

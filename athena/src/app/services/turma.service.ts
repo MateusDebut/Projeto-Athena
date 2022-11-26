@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {Turma} from "../model/Turma";
+import {environment} from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,10 @@ import {Turma} from "../model/Turma";
 
 export class TurmaService{
 
-  url = "http://localhost:8080/turmas";
+  url = `${environment.apiUrl}/turmas`;
 
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
   getTurmas(): Observable<Turma[]>{
