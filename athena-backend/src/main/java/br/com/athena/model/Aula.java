@@ -28,6 +28,10 @@ public class Aula {
     @JsonIgnoreProperties("aula")
     private List<Atividade> atividades;
 
+    @OneToMany(mappedBy = "aula", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("aula")
+    private List<Comentario> comentarios;
+
     public long getId() {
         return id;
     }

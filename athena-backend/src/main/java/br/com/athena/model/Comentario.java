@@ -1,14 +1,13 @@
 package br.com.athena.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Comentarios implements Serializable {
+public class Comentario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +15,21 @@ public class Comentarios implements Serializable {
 
     private String comentario;
 
-    private Date data;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date data = new java.sql.Date(System.currentTimeMillis());
 
-    public Comentarios() {
+    @ManyToOne
+    @JsonIgnoreProperties("comentario")
+    private Aula aula;
+
+    @ManyToOne
+    @JsonIgnoreProperties("comentario")
+    private Aluno usuario;
+
+    public Comentario() {
     }
 
-    public Comentarios(long id, String comentario, Date data) {
+    public Comentario(long id, String comentario, Date data) {
         this.id = id;
         this.comentario = comentario;
         this.data = data;
