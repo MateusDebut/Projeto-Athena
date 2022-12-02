@@ -1,6 +1,7 @@
 package br.com.athena.controller;
 
 import br.com.athena.model.Aula;
+import br.com.athena.model.Comentario;
 import br.com.athena.service.AulaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,11 @@ public class AulaController {
     @GetMapping("/{id}")
     public ResponseEntity<Aula> getById(@PathVariable long id){
         return ResponseEntity.ok(this.aulaService.getById(id));
+    }
+
+    @GetMapping("/{id}/comentarios")
+    public ResponseEntity<List<Comentario>> getComentaiosAula(@PathVariable long id){
+        return ResponseEntity.ok(this.aulaService.getComentarios(id));
     }
 
     @PostMapping

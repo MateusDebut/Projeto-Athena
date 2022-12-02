@@ -1,12 +1,16 @@
 package br.com.athena.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class Comentario implements Serializable {
 
     @Id
@@ -32,30 +36,6 @@ public class Comentario implements Serializable {
     public Comentario(long id, String comentario, Date data) {
         this.id = id;
         this.comentario = comentario;
-        this.data = data;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
         this.data = data;
     }
 }

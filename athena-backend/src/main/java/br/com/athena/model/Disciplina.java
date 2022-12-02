@@ -2,11 +2,15 @@ package br.com.athena.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Disciplina {
 
     @Id
@@ -25,44 +29,4 @@ public class Disciplina {
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("disciplina")
     private List<Aula> aulas;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getLinkImagem() {
-        return linkImagem;
-    }
-
-    public void setLinkImagem(String linkImagem) {
-        this.linkImagem = linkImagem;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }
-
-    public List<Aula> getAulas() {
-        return aulas;
-    }
-
-    public void setAulas(List<Aula> aulas) {
-        this.aulas = aulas;
-    }
 }

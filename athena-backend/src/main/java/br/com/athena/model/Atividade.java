@@ -1,10 +1,16 @@
 package br.com.athena.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class Atividade {
 
     @Id
@@ -19,27 +25,11 @@ public class Atividade {
     @JsonIgnoreProperties("atividade")
     private Aula aula;
 
-    public long getId() {
-        return id;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonProperty("data_de_publicacao")
+    private Date dataDePublicacao = new java.sql.Date(System.currentTimeMillis());
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    @JsonProperty("data_de_publicacao")
+    private Date dataDeEntrega = new java.sql.Date(System.currentTimeMillis());
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 }
