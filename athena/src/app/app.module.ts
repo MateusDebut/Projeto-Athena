@@ -7,7 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AulaComponent} from "./views/aula/aula.component";
 import {DisciplinaComponent} from "./views/disciplina/disciplina.component";
 import {SafePipe} from "./safe.pipe";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SidebarComponent} from "./shared/sidebar/sidebar.component";
 import {NavbarComponent} from "./shared/navbar/navbar.component";
 import { HomeComponent } from './views/home/home.component';
@@ -35,7 +35,8 @@ import { ComentariosComponent } from './shared/comentarios/comentarios.component
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AcessoModule
+    AcessoModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

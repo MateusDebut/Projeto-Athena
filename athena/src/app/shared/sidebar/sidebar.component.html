@@ -1,3 +1,4 @@
+<!--
 <div class="d-flex flex-column flex-shrink-0 text-white bg-dark altura" style="width: 280px;">
   <a href="/" class="d-flex align-items-center mb-3 mt-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -28,3 +29,71 @@
   </div>
 </div>
 
+-->
+
+<!--
+<div class="d-flex flex-column flex-shrink-0 text-white bg-dark altura" style="width: 280px;">
+  <a href="/" class="d-flex align-items-center mb-3 mt-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-4">Programação I</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item" *ngFor="let aula of aulas">
+      <a style="cursor: pointer" (click)="irParaAula(aula.id)" class="nav-link text-white" aria-current="page">
+        <svg class="bi" width="20" height="16"><use xlink:href="#home"></use></svg>
+        {{ aula.titulo }}
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>mdo</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    </ul>
+  </div>
+</div>
+
+-->
+
+<div _ngcontent-cvr-c120="" id="style-1" class="col-md-3 navbar-dark navbar-expand-lg menu-lateral">
+  <div _ngcontent-cvr-c120="" class="row">
+    <div _ngcontent-cvr-c120="" class="col-md-8">
+      <h3 _ngcontent-cvr-c120="" class="align-items-end d-flex mb-3 mt-2 text-danger"> Angular </h3>
+    </div>
+    <div _ngcontent-cvr-c120="" class="col-md-4 d-flex align-items-center justify-content-center">
+      <!----><a _ngcontent-cvr-c120="" data-toggle="tooltip" data-placement="top" title="Material da aula"
+                target="_blank" class="icon-size text-danger" href="https://bit.ly/doc-angular"><i
+      _ngcontent-cvr-c120="" aria-hidden="true" class="fa fa-book"></i></a>
+      <!---->
+    </div>
+  </div>
+  <hr _ngcontent-cvr-c120="" class="bg-dark m-0">
+  <div _ngcontent-cvr-c120="" id="navbarAulas" class="row mt-3 mb-4">
+    <div _ngcontent-cvr-c120="" class="col-md-12" *ngFor="let aula of aulas">
+      <div _ngcontent-cvr-c120="">
+        <div _ngcontent-cvr-c120=""><i _ngcontent-cvr-c120="" aria-hidden="true"
+                                       class="fa fa-play-circle-o"></i><small _ngcontent-cvr-c120="" class="text-dark text-muted"> 1
+        </small><a _ngcontent-cvr-c120="" class="text-dark" (click)="irParaAula(aula.id)"> {{ aula.titulo }} </a></div>
+        <!---->
+        <div _ngcontent-cvr-c120="">
+          <div _ngcontent-cvr-c120="">
+            <!---->
+          </div>
+          <!---->
+        </div>
+        <!---->
+        <hr _ngcontent-cvr-c120="">
+      </div>
+    </div>
+    <!---->
+  </div>
+</div>

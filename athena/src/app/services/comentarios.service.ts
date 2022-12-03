@@ -10,12 +10,28 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class ComentariosService {
 
-  url = `${environment.apiUrl}/comentarios`;
+  url = `${environment.apiUrl}`;
 
   constructor(private httpClient: HttpClient) { }
 
-  getComentarios(): Observable<Comentario[]>{
-    return this.httpClient.get<Comentario[]>(this.url)
+  getComentarios(aulaId: number): Observable<Comentario[]>{
+    return this.httpClient.get<Comentario[]>(this.url + "/aulas/" + aulaId + "/comentarios")
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  postComentario(comentario: Comentario): Observable<Comentario>{
+    return this.httpClient.post<Comentario>(this.url + "/comentarios", JSON.stringify(comentario))
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  getComentariosById(id: number): Observable<Comentario>{
+    return this.httpClient.get<Comentario>(this.url + "/comentarios/" + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
