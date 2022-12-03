@@ -1,8 +1,6 @@
 package br.com.athena.service;
 
-import br.com.athena.model.Aluno;
 import br.com.athena.model.Professor;
-import br.com.athena.model.dto.ProfessorLoginDTO;
 import br.com.athena.model.dto.ProfessorLoginDTO;
 import br.com.athena.repository.ProfessorRepository;
 import org.apache.commons.codec.binary.Base64;
@@ -56,6 +54,8 @@ public class ProfessorService {
                 user.setNome(usuario.get().getNome());
                 user.setEmail(usuario.get().getEmail());
                 user.setAuth(usuario.get().getRoles());
+                user.setDisciplinas(usuario.get().getDisciplinas());
+                user.getDisciplinas().forEach(disciplina -> disciplina.setAulas(null));
 
                 return user;
             }

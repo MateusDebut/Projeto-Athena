@@ -1,15 +1,23 @@
 package br.com.athena.model.dto;
 
+import br.com.athena.model.Disciplina;
 import br.com.athena.model.Professor;
 import br.com.athena.model.RoleModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
+@Setter
 public class ProfessorLoginDTO implements UserDetails, Serializable {
 
     private long id;
@@ -25,6 +33,10 @@ public class ProfessorLoginDTO implements UserDetails, Serializable {
 
     private List<RoleModel> auth;
 
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("professor")
+    private List<Disciplina> disciplinas;
+
     public ProfessorLoginDTO(){}
 
     public ProfessorLoginDTO(Professor professor) {
@@ -35,57 +47,9 @@ public class ProfessorLoginDTO implements UserDetails, Serializable {
         this.auth = professor.getRoles();
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public List<RoleModel> getAuth() {
-        return auth;
-    }
-
-    public void setAuth(List<RoleModel> auth) {
-        this.auth = auth;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.getAuth();
     }
 
     @Override
