@@ -1,6 +1,7 @@
 package br.com.athena.controller;
 
 import br.com.athena.model.Atividade;
+import br.com.athena.model.dto.AtividadeDTO;
 import br.com.athena.service.AtividadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,12 +23,12 @@ public class AtividadeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Atividade>> getAll(){
+    public ResponseEntity<List<AtividadeDTO>> getAll(){
         return ResponseEntity.ok(this.atividadeService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Atividade> getById(@PathVariable long id){
+    public ResponseEntity<AtividadeDTO> getById(@PathVariable long id){
         return ResponseEntity.ok(this.atividadeService.getById(id));
     }
 

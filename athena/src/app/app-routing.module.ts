@@ -5,6 +5,9 @@ import {DisciplinaComponent} from "./views/disciplina/disciplina.component";
 import {AcessoComponent} from "./acesso/acesso.component";
 import {HomeComponent} from "./views/home/home.component";
 import {AutenticacaoGuard} from "./acesso/autenticacao.guard";
+import {AtividadeComponent} from "./views/atividade/atividade.component";
+import {AvisosComponent} from "./views/avisos/avisos.component";
+import {AvisoComponent} from "./views/aviso/aviso.component";
 
 
 const routes: Routes = [
@@ -15,7 +18,10 @@ const routes: Routes = [
   },
   {path: 'home', component: HomeComponent, canActivate: [AutenticacaoGuard]},
   {path: 'disciplina/:id', component: DisciplinaComponent, canActivate: [AutenticacaoGuard]},
-  {path: 'aula/:id', component: AulaComponent, canActivate: [AutenticacaoGuard]}
+  {path: 'aulas/:id', component: AulaComponent, canActivate: [AutenticacaoGuard]},
+  {path: 'atividades/:id', component: AtividadeComponent, canActivate: [AutenticacaoGuard]},
+  {path: 'avisos', component: AvisosComponent, canActivate: [AutenticacaoGuard]},
+  {path: 'aviso/:id', component: AvisoComponent, canActivate: [AutenticacaoGuard]}
 ];
 
 @NgModule({

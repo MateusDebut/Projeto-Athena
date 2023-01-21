@@ -20,8 +20,14 @@ public class Turma implements Serializable {
     private int ano;
 
     @ManyToOne
-    @JsonIgnoreProperties("turma")
-    private Professor professor;
+    @JsonIgnoreProperties("disciplina")
+    private Disciplina disciplina;
+
+    @ManyToMany
+    @JoinTable(name = "Turma_Professores",
+            joinColumns = @JoinColumn(name = "turma_id"),
+            inverseJoinColumns = @JoinColumn(name = "professor_id"))
+    private List<Professor> professores;
 
     @OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("turma")

@@ -1,0 +1,15 @@
+.container-grade-disciplinas{
+  display: flex;
+  width: auto;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+h2{
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}

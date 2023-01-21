@@ -4,6 +4,7 @@ import br.com.athena.model.Disciplina;
 import br.com.athena.model.Professor;
 import br.com.athena.model.RoleModel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,8 @@ import java.util.List;
 
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfessorLoginDTO implements UserDetails, Serializable {
 
     private long id;
@@ -25,13 +28,11 @@ public class ProfessorLoginDTO implements UserDetails, Serializable {
     private String nome;
 
     private String email;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
     private String token;
 
-    private List<RoleModel> auth;
+    private List<RoleModel> roles;
 
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("professor")
@@ -44,22 +45,22 @@ public class ProfessorLoginDTO implements UserDetails, Serializable {
         this.senha = professor.getSenha();
         this.id = professor.getId();
         this.nome = professor.getNome();
-        this.auth = professor.getRoles();
+        this.roles = professor.getRoles();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.getAuth();
+        return this.getRoles();
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.senha;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.email;
     }
 
     @Override

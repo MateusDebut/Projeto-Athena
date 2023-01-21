@@ -1,9 +1,11 @@
 package br.com.athena.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class Atividade implements Serializable {
@@ -14,6 +16,7 @@ public class Atividade implements Serializable {
 
     private String titulo;
 
+    @Lob
     private String descricao;
 
     private String link;
@@ -21,6 +24,13 @@ public class Atividade implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("atividade")
     private Aula aula;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonProperty("data_de_publicacao")
+    private Date dataDePublicacao = new java.sql.Date(System.currentTimeMillis());
+
+    @JsonProperty("data_de_entrega")
+    private Date dataDeEntrega;
 
     public long getId() {
         return id;
@@ -60,5 +70,21 @@ public class Atividade implements Serializable {
 
     public void setAula(Aula aula) {
         this.aula = aula;
+    }
+
+    public Date getDataDePublicacao() {
+        return dataDePublicacao;
+    }
+
+    public void setDataDePublicacao(Date dataDePublicacao) {
+        this.dataDePublicacao = dataDePublicacao;
+    }
+
+    public Date getDataDeEntrega() {
+        return dataDeEntrega;
+    }
+
+    public void setDataDeEntrega(Date dataDeEntrega) {
+        this.dataDeEntrega = dataDeEntrega;
     }
 }

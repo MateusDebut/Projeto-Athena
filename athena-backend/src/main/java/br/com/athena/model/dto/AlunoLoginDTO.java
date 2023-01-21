@@ -2,6 +2,7 @@ package br.com.athena.model.dto;
 
 import br.com.athena.model.Aluno;
 import br.com.athena.model.RoleModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AlunoLoginDTO implements UserDetails, Serializable {
 
     private long id;
@@ -18,19 +20,18 @@ public class AlunoLoginDTO implements UserDetails, Serializable {
 
     private String email;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
     private String token;
 
-    private List<RoleModel> auth;
+    private List<RoleModel> roles;
 
     public AlunoLoginDTO(Aluno user) {
         this.email = user.getEmail();
         this.senha = user.getSenha();
         this.id = user.getId();
         this.nome = user.getNome();
-        this.auth = user.getRoles();
+        this.roles = user.getRoles();
     }
 
     public AlunoLoginDTO() {
@@ -78,7 +79,7 @@ public class AlunoLoginDTO implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.auth;
+        return this.roles;
     }
 
     @Override
@@ -111,11 +112,11 @@ public class AlunoLoginDTO implements UserDetails, Serializable {
         return true;
     }
 
-    public List<RoleModel> getAuth() {
-        return auth;
+    public List<RoleModel> getRoles() {
+        return roles;
     }
 
-    public void setAuth(List<RoleModel> auth) {
-        this.auth = auth;
+    public void setRoles(List<RoleModel> roles) {
+        this.roles = roles;
     }
 }

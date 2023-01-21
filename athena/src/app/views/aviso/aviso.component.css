@@ -1,0 +1,10 @@
+.cabecalho{
+  border-bottom: 1px solid #dee2e6;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h2{
+  margin-bottom: 20px;
+}

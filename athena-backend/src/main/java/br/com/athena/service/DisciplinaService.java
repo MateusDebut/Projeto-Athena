@@ -1,10 +1,12 @@
 package br.com.athena.service;
 
 import br.com.athena.model.Disciplina;
+import br.com.athena.model.dto.DisciplinaDTO;
 import br.com.athena.repository.DisciplinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,12 +19,18 @@ public class DisciplinaService {
         this.repository = disciplinaRepository;
     }
 
-    public List<Disciplina> getAll(){
-        return repository.findAll();
+    public List<DisciplinaDTO> getAll(){
+        List<Disciplina> disciplinas = repository.findAll();
+        List<DisciplinaDTO> disciplinaDTOS = new ArrayList<>();
+        disciplinas.forEach(disciplina -> {
+            disciplinaDTOS.add(new DisciplinaDTO(disciplina));
+        });
+        return disciplinaDTOS;
     }
 
-    public Disciplina getById(long id){
-        return repository.findById(id).orElse(null);
+    public DisciplinaDTO getById(long id){
+        Disciplina disciplina = repository.findById(id).orElse(null);
+        return new DisciplinaDTO(disciplina);
     }
 
     public Disciplina post(Disciplina disciplina){

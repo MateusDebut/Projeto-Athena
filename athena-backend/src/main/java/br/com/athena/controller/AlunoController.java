@@ -24,14 +24,12 @@ public class AlunoController {
 
     @GetMapping
     public ResponseEntity<List<Aluno>> getAll(){
-        System.out.println("Chegou aqui");
         return ResponseEntity.ok(alunoService.getAlunos());
     }
 
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Aluno> save(@RequestBody Aluno aluno) {
-        System.out.println("Chegou aqui");
         return ResponseEntity.ok(alunoService.salvarAluno(aluno));
     }
 

@@ -4,12 +4,19 @@
 }
 
 .dimensao-card{
-  height: 40vw;
-  width: 70vw;
+  height: 48%;
+}
+
+.dimensao-display{
+  height: 90%;
 }
 
 .dimensao-div{
   height: 100%;
-  width: 100%;
   background-color: #eee;
+}
+
+.row{
+  margin: 0px;
+  height: 100%;
 }

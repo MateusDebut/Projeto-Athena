@@ -16,6 +16,13 @@ import { GradeDisciplinasComponent } from './shared/grade-disciplinas/grade-disc
 import {AutenticacaoInterceptor} from "./acesso/autenticacao.interceptor";
 import {AcessoModule} from "./acesso/acesso.module";
 import { ComentariosComponent } from './shared/comentarios/comentarios.component';
+import { GerenciamentoDisciplinaComponent } from './shared/gerenciamento-disciplina/gerenciamento-disciplina.component';
+import { CardSliderComponent } from './shared/card-slider/card-slider.component';
+import { AtividadeComponent } from './views/atividade/atividade.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ListaAvisosComponent } from './shared/lista-avisos/lista-avisos.component';
+import { AvisosComponent } from './views/avisos/avisos.component';
+import { AvisoComponent } from './views/aviso/aviso.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,13 @@ import { ComentariosComponent } from './shared/comentarios/comentarios.component
     HomeComponent,
     MensagensComponent,
     GradeDisciplinasComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    GerenciamentoDisciplinaComponent,
+    CardSliderComponent,
+    AtividadeComponent,
+    ListaAvisosComponent,
+    AvisosComponent,
+    AvisoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +49,8 @@ import { ComentariosComponent } from './shared/comentarios/comentarios.component
     HttpClientModule,
     FormsModule,
     AcessoModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,12 @@
 package br.com.athena.service;
 
 import br.com.athena.model.Atividade;
+import br.com.athena.model.dto.AtividadeDTO;
 import br.com.athena.repository.AtividadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +20,18 @@ public class AtividadeService {
         this.repository = atividadeRepository;
     }
 
-    public List<Atividade> getAll(){
-        return repository.findAll();
+    public List<AtividadeDTO> getAll(){
+        List<AtividadeDTO> atividadesDTO = new ArrayList<>();
+        List<Atividade> atividades = repository.findAll();
+        atividades.forEach(atividade -> {
+            atividadesDTO.add(new AtividadeDTO(atividade));
+        });
+        return atividadesDTO;
     }
 
-    public Atividade getById(long id){
-        return repository.findById(id).orElse(null);
+    public AtividadeDTO getById(long id){
+        Atividade atividade = repository.findById(id).orElse(null);
+        return new AtividadeDTO(atividade);
     }
 
     public Atividade post(Atividade atividade){

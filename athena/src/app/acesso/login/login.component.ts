@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {Professor} from "../../model/Professor";
-import {AlunoService} from "../../services/aluno.service";
-import {Aluno} from "../../model/Aluno";
 import {ProfessorService} from "../../services/professor.service";
 import {Usuario} from "../../model/Usuario";
 import {UsuarioService} from "../../services/usuario.service";
@@ -14,8 +11,8 @@ import {UsuarioService} from "../../services/usuario.service";
 })
 export class LoginComponent implements OnInit {
 
-  professor: Professor = new Professor();
-  aluno: Aluno = new Aluno();
+  usuario: Usuario = new Usuario();
+  ehProfessor!: boolean;
 
   constructor(private usuarioService: UsuarioService, private professorService: ProfessorService,
               private router: Router) {
@@ -24,8 +21,28 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginAluno(){
-    this.usuarioService.login(this.aluno).subscribe((resp: Usuario) => {
+  login(){
+    if(this.ehProfessor){
+      this.loginProfessor();
+    }else{
+      this.loginAluno();
+    }
+  }
+
+  private loginAluno(){
+    this.usuarioService.login(this.usuario, "alunos").subscribe((resp: Usuario) => {
+      if(resp.token != null){
+        localStorage.setItem("token", resp.token);
+        this.usuarioService.estaLogado = true;
+        this.router.navigate(['/home']);
+      }else{
+        alert("Tell me who you are")
+      }
+    });
+  }
+
+  private loginProfessor(){
+    this.usuarioService.login(this.usuario, "professores").subscribe((resp: Usuario) => {
       if(resp.token != null){
         localStorage.setItem("token", resp.token);
         this.usuarioService.estaLogado = true;

@@ -20,10 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService alunoAuthenticationService;
 
-    @Qualifier("professorAuthenticationService")
-    @Autowired
-    private UserDetailsService professorAuthenticationService;
-
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

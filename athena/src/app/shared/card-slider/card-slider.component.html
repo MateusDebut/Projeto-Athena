@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>{{ tituloSlider }}</h2>
+  <div class="lista">
+    <div class="card p-0 mt-3" *ngFor="let item of listaDeElementos">
+      <div class="card-body">
+        <p class="card-title"><strong>{{ item.titulo }}</strong></p>
+        <p>{{item?.data_de_entrega}}</p>
+        <a *ngIf="tituloSlider == 'aulas'" [routerLink]='["/aulas", item.id]' class="btn btn-outline-primary">Acessar</a>
+        <a *ngIf="tituloSlider == 'atividades'" [routerLink]='["/atividades", item.id]' class="btn btn-outline-primary">Acessar</a>
+      </div>
+    </div>
+  </div>
+</div>

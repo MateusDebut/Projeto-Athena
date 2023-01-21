@@ -1,7 +1,7 @@
 <div *ngIf="comentarios$ | async as comentarios">
   <ul class="list-unstyled">
     <li *ngFor="let comentario of comentarios">
-      <p class="text-dark font-weight-bold mr-1">{{ comentario.usuario.nome }}</p>
+      <p class="text-dark font-weight-bold mr-1">{{ comentario.usuario.email }}</p>
       <em>{{ comentario.data | date: "dd-MM-yyyy HH:mm" }}</em>
       <p class="break-word mb-2">{{ comentario.comentario }}</p>
     </li>

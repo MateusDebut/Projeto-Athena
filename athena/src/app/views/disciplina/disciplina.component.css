@@ -6,10 +6,17 @@ a:hover{
   color: #dc8602;
 }
 
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+.container{
+  display: grid;
+  grid-template-areas:
+  "avisos aulas"
+  "avisos atividades";
+  padding-top: 20px;
+  gap: 50px;
+  grid-template-columns: 25% 1fr;
+}
 
-  display: flex;
-  align-items: center;
+.avisos{
+  grid-area: avisos;
+  grid-column: 1/2;
 }

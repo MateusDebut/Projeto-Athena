@@ -1,0 +1,33 @@
+.lista{
+  max-width: 700px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar{
+  height: 4px;
+  width: 4px;
+  background: #f8f9ff;
+  position: relative;
+}
+::-webkit-scrollbar-thumb:horizontal{
+  background: #e3e7f7;
+  border-radius: 10px;
+}
+
+h2{
+  position: relative;
+}
+
+
+
+.card{
+  max-width: 350px;
+  width: 300px;
+  display: inline-block;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 15px;
+}

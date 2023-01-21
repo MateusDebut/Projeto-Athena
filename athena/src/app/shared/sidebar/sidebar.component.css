@@ -7,9 +7,9 @@ a {
 }
 
 .menu-lateral[_ngcontent-cvr-c120] {
-  overflow: auto;
+  overflow: scroll;
   right: 0;
-  height: 390px;
+  height: 50%;
   border-bottom: 3px solid #555;
 }
 

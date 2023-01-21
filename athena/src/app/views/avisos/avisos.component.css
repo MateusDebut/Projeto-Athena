@@ -1,0 +1,32 @@
+.container{
+  padding: 30px;
+}
+
+.cabecalho{
+  border-bottom: 1px solid #555;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h2{
+  margin-bottom: 20px;
+}
+
+.titulo-aviso{
+  padding: 10px;
+  padding-right: 30px;
+  margin-right: 30px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+tr{
+  border-bottom: 1px solid #ceeae5;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}

@@ -23,11 +23,22 @@ public class ProfessorService {
     }
 
     public List<Professor> getAll(){
-        return repository.findAll();
+        List<Professor> professores = repository.findAll();
+        professores
+                .forEach(professor -> professor.getDisciplinas()
+                        .forEach(disciplina -> disciplina.setAulas(null)
+                        )
+                );
+        return professores;
     }
 
     public Professor getById(long id){
-        return repository.findById(id).orElse(null);
+        Professor professor =  repository.findById(id).orElse(null);
+        if (professor != null){
+            professor.getDisciplinas()
+                    .forEach(disciplina -> disciplina.setAulas(null));
+        }
+        return professor;
     }
 
     public Professor salvarProfessor(Professor professor) {
@@ -53,7 +64,7 @@ public class ProfessorService {
                 user.setId(usuario.get().getId());
                 user.setNome(usuario.get().getNome());
                 user.setEmail(usuario.get().getEmail());
-                user.setAuth(usuario.get().getRoles());
+                user.setRoles(usuario.get().getRoles());
                 user.setDisciplinas(usuario.get().getDisciplinas());
                 user.getDisciplinas().forEach(disciplina -> disciplina.setAulas(null));
 

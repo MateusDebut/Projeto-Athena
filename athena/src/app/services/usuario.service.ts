@@ -10,13 +10,13 @@ import {Usuario} from "../model/Usuario";
 })
 export class UsuarioService {
 
-  url = `${environment.apiUrl}/alunos`;
+  url = environment.apiUrl;
   estaLogado = false;
 
   constructor(private httpClient: HttpClient) { }
 
-  login(usuario: Usuario): Observable<Usuario>{
-    return this.httpClient.post<Usuario>(this.url + "/logar", JSON.stringify(usuario))
+  login(usuario: Usuario, rota: string): Observable<Usuario>{
+    return this.httpClient.post<Usuario>(`${this.url}/${rota}/logar`, JSON.stringify(usuario))
       .pipe(
         retry(2),
         catchError(this.handleError)

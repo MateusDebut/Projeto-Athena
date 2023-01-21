@@ -1,3 +1,4 @@
+<!--
 <div class="container justify-content-center">
   <div class="list-group list-group-flush borda-lista-aulas" *ngFor="let aula of disciplina.aulas">
     <a [routerLink]='["/aula", aula.id]' class="list-group-item list-group-item-action" aria-current="true">
@@ -5,4 +6,22 @@
     </a>
   </div>
 </div>
+
+-->
+
+<div class="container">
+  <section class="avisos">
+    <app-lista-avisos [listaDeAvisos]="disciplina.avisos"></app-lista-avisos>
+  </section>
+
+  <section class="aulas">
+    <app-card-slider [listaDeElementos]="disciplina.aulas" [tituloSlider]="'aulas'"></app-card-slider>
+  </section>
+
+  <section class="atividades">
+    <app-card-slider [listaDeElementos]="getAllAtividades()" [tituloSlider]="'atividades'"></app-card-slider>
+  </section>
+
+</div>
+
 

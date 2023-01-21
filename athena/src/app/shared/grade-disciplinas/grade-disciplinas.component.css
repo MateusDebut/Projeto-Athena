@@ -1,0 +1,13 @@
+.row{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card{
+  max-width: 20%;
+}
+
+card-img-top{
+  width: 100%;
+}

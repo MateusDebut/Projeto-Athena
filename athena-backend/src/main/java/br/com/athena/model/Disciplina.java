@@ -29,4 +29,8 @@ public class Disciplina {
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("disciplina")
     private List<Aula> aulas;
+
+    @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("disciplina")
+    private List<Aviso> avisos;
 }

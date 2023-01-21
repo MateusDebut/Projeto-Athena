@@ -1,0 +1,7 @@
+<div class="lista-avisos">
+  <h2>Avisos</h2>
+  <ul *ngFor="let aviso of listaDeAvisos | slice:0 : 8">
+    <li [routerLink]='["/aviso", aviso.id]'><div class="linha"><mat-icon class="icone">message</mat-icon> {{ aviso.titulo }}</div></li>
+  </ul>
+  <button [routerLink]='["/avisos"]' class="btn btn-primary">Ver mais</button>
+</div>
