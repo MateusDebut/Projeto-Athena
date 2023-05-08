@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment.prod";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {Usuario} from "../model/Usuario";
@@ -16,11 +16,17 @@ export class UsuarioService {
   constructor(private httpClient: HttpClient) { }
 
   login(usuario: Usuario, rota: string): Observable<Usuario>{
-    return this.httpClient.post<Usuario>(`${this.url}/${rota}/logar`, JSON.stringify(usuario))
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.httpClient.post<Usuario>(
+      `${this.url}/${rota}/logar`,
+      JSON.stringify(usuario),
+      { headers }
+    )
       .pipe(
         retry(2),
         catchError(this.handleError)
-      )
+      );
   }
 
   // Manipulação de erros
